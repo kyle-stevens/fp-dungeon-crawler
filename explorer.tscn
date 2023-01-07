@@ -1,0 +1,76 @@
+[gd_scene load_steps=5 format=3 uid="uid://bot1q1ge21any"]
+
+[ext_resource type="Script" path="res://explorer.gd" id="1_77p0f"]
+[ext_resource type="PackedScene" uid="uid://dgtjawbsxxgex" path="res://user_interface.tscn" id="2_s17fi"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ina0q"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_o85s4"]
+radius = 0.25
+
+[node name="Explorer" type="RigidBody3D"]
+contact_monitor = true
+script = ExtResource("1_77p0f")
+
+[node name="CharacterCollision" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_ina0q")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+current = true
+
+[node name="PlayerFrontInteraction" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+collision_mask = 15
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerFrontInteraction"]
+shape = SubResource("SphereShape3D_o85s4")
+
+[node name="PlayerBackInteraction" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+collision_mask = 15
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerBackInteraction"]
+shape = SubResource("SphereShape3D_o85s4")
+
+[node name="PlayerLeftInteraction" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+collision_mask = 15
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerLeftInteraction"]
+shape = SubResource("SphereShape3D_o85s4")
+
+[node name="PlayerRightInteraction" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+collision_mask = 15
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerRightInteraction"]
+shape = SubResource("SphereShape3D_o85s4")
+
+[node name="LightSource" type="Node3D" parent="."]
+
+[node name="Flashlight" type="SpotLight3D" parent="LightSource"]
+visible = false
+light_color = Color(1, 0.705882, 0.470588, 1)
+spot_attenuation = 2.0
+spot_angle_attenuation = 2.0
+
+[node name="Torch" type="OmniLight3D" parent="LightSource"]
+visible = false
+light_color = Color(1, 0.705882, 0.470588, 1)
+omni_range = 2.0
+omni_attenuation = 2.0
+
+[node name="UserInterface" parent="." instance=ExtResource("2_s17fi")]
+
+[node name="Timer" type="Timer" parent="UserInterface"]
+wait_time = 0.15
+
+[connection signal="body_entered" from="PlayerFrontInteraction" to="." method="_on_player_front_interaction_body_entered"]
+[connection signal="body_exited" from="PlayerFrontInteraction" to="." method="_on_player_front_interaction_body_exited"]
+[connection signal="body_entered" from="PlayerBackInteraction" to="." method="_on_player_back_interaction_body_entered"]
+[connection signal="body_exited" from="PlayerBackInteraction" to="." method="_on_player_back_interaction_body_exited"]
+[connection signal="body_entered" from="PlayerLeftInteraction" to="." method="_on_player_left_interaction_body_entered"]
+[connection signal="body_exited" from="PlayerLeftInteraction" to="." method="_on_player_left_interaction_body_exited"]
+[connection signal="body_entered" from="PlayerRightInteraction" to="." method="_on_player_right_interaction_body_entered"]
+[connection signal="body_exited" from="PlayerRightInteraction" to="." method="_on_player_right_interaction_body_exited"]
+[connection signal="timeout" from="UserInterface/Timer" to="." method="_on_timer_timeout"]

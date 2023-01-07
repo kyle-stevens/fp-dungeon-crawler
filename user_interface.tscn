@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://dgtjawbsxxgex"]
+
+[node name="UserInterface" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="bullets" type="Label" parent="."]
+offset_left = 1296.0
+offset_top = 960.0
+offset_right = 1434.0
+offset_bottom = 986.0
+scale = Vector2(4.36264, 3.74125)
+text = "Projectiles Left - 0
+"
+
+[node name="health" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+scale = Vector2(4.99601, 5.90923)
+text = "3 - Health"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+offset_right = 1942.0
+offset_bottom = 1095.0
+color = Color(1, 0, 0, 1)
+
+[node name="instructions" type="Label" parent="."]
+offset_left = 8.0
+offset_top = 808.0
+offset_right = 408.0
+offset_bottom = 938.0
+scale = Vector2(2.00787, 2.00787)
+text = "Press W to move forward
+Press S to move backwards
+Press A/D to rotate Left/Right
+Use the Arrow Keys to attack directly in front of you
+Press Spacebar to fire a projectile"
+
+[node name="popup" type="Label" parent="."]
+offset_left = 936.0
+offset_top = 448.0
+offset_right = 976.0
+offset_bottom = 471.0

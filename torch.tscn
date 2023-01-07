@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://d37uf0ns38lo"]
+
+[ext_resource type="Texture2D" uid="uid://bmhbmofbfawa3" path="res://icon.svg" id="1_c43l3"]
+
+[node name="Torch" type="OmniLight3D"]
+light_color = Color(1, 0.705882, 0.470588, 1)
+omni_range = 0.75
+omni_attenuation = 0.5
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+texture = ExtResource("1_c43l3")
