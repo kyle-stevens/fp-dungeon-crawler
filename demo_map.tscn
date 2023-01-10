@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://csxuvhffe157m"]
+[gd_scene load_steps=11 format=3 uid="uid://csxuvhffe157m"]
 
 [ext_resource type="PackedScene" uid="uid://bot1q1ge21any" path="res://explorer.tscn" id="1_2nox7"]
 [ext_resource type="PackedScene" uid="uid://s2ekiyse6heb" path="res://floor.tscn" id="2_52lt4"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bh33n5h4clytl" path="res://wall_torch.tscn" id="4_7jy6f"]
 [ext_resource type="PackedScene" uid="uid://boxny7najbn7m" path="res://pathenemy.tscn" id="5_afnq1"]
 [ext_resource type="PackedScene" uid="uid://bxlafbs03x6uh" path="res://roamingenemy.tscn" id="6_x5o7p"]
+[ext_resource type="PackedScene" uid="uid://vkaupjrn0pro" path="res://turretenemy.tscn" id="7_qrfnd"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a6dfc"]
 sky_top_color = Color(0, 0.196078, 0.584314, 1)
@@ -372,3 +373,7 @@ environment = SubResource("Environment_j15q4")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.638768, 0.175693, -0.749071, 0, 0.973579, 0.228351, 0.7694, -0.145863, 0.621891, 0, 0, 0)
 light_angular_distance = 0.3
+
+[node name="TurretEnemy" parent="." node_paths=PackedStringArray("target_body") instance=ExtResource("7_qrfnd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -8)
+target_body = NodePath("../Explorer")

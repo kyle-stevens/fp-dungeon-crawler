@@ -9,6 +9,7 @@ func _ready():
 func _process(delta):
 #	raycast.add_exception(body_to_ignore)
 	self.position += self.basis.z * -0.1
+#	print(self.position)
 	
 #	print(raycast.exclude_parent)
 #	print(raycast.target_position)
@@ -17,13 +18,15 @@ func _process(delta):
 
 func _on_body_entered(body):
 	if body.type == Globals.EntityType.ENEMY:
-		print("Hit Enemy")
+#		print("Hit Enemy")
 		body.attacked("shot")
 		queue_free()
 	if body.type == Globals.EntityType.ARCHITECTURE:
-		print("Hit Wall")
-		body.attacked("shot")
+#		print("Hit Wall")
+		if body.has_method("attacked"):
+			body.attacked("shot")
 		queue_free()
+#		print(self.position)
 	
 #	if body is StaticBody3D:
 ##		print("Hit Wall or Surface")
@@ -31,7 +34,7 @@ func _on_body_entered(body):
 
 
 func _on_tree_exiting():
-#	print("exiting tree")
+	print("exiting tree")
 	var explosion = preload("res://explosion.tscn").instantiate()
 	explosion.emitting = true
 	explosion.position = self.position

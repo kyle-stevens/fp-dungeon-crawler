@@ -163,7 +163,7 @@ func _process(delta):
 
 func attacked(direction):
 	self.health -= 1
-	print(direction)
+#	print(direction)
 	$UserInterface/ColorRect.visible = true
 	$UserInterface/Timer.start(0.15)
 
@@ -173,7 +173,8 @@ func _on_player_front_interaction_body_entered(body):
 #	print(self.objs_in_front)
 	if body.has_method("interact"):
 		print("Press Return/Enter to Interact")
-		#$UserInterface/popup.text = "Press Return/Enter to Interact"
+		#$UserInterface/popup.text = "Press Return/Enter to Interact" #needs to be revised
+		#act more as an object passed that is queried each iteration
 
 func _on_player_front_interaction_body_exited(body):
 	if body == self.objs_in_front:

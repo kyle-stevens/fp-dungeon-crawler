@@ -53,15 +53,15 @@ func enemyMovement():
 			distances[3] = Vector3(self.position.x - 1, self.position.y, self.position.z)
 		else:
 			distances[3] = Vector3(5000,5000,5000)
-		print(directions)
-		print(distances)
+#		print(directions)
+#		print(distances)
 		var min_vector = distances[0]
 		for i in range(1,4):
 	#		distances[i] =  target_body.position.distance_to(distances[i])
 			if target_body.position.distance_to(distances[i]) < target_body.position.distance_to(min_vector):
 				min_vector = distances[i]
-		print(distances)
-		print(min_vector)
+#		print(distances)
+#		print(min_vector)
 		self.position = min_vector
 		
 #	print(self.position)
