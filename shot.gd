@@ -9,6 +9,7 @@ func _ready():
 func _process(delta):
 #	raycast.add_exception(body_to_ignore)
 	self.position += self.basis.z * -0.1
+	
 #	print(self.position)
 	
 #	print(raycast.exclude_parent)

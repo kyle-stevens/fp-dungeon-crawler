@@ -13,7 +13,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	sprite.look_at(self.target_body.position, Vector3.UP)
-	self.rotation = (self.target_body.position - self.position).normalized()
+	print((self.target_body.position - self.position).normalized().y)
+	self.rotation.y = (self.target_body.position - self.position).normalized().y
 #	print(self.rotation)
 
 func attacked(direction):
@@ -27,7 +28,7 @@ func _on_timer_timeout():
 	var shot = preload("res://shot.tscn").instantiate()
 	var spawnPoint : Node3D = get_node("EnemyTurret")
 	shot.position = spawnPoint.global_position
-	print(shot.position)
+	#print(shot.position)
 	shot.rotation = Vector3(0,0,0)
 	get_tree().root.add_child(shot)
 	#This is not working properly, needs more work
