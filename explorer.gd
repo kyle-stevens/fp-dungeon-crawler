@@ -144,6 +144,7 @@ func _process(delta):
 		var shot = preload("res://shot.tscn").instantiate()
 		shot.position = self.position
 		shot.rotation = self.rotation
+		shot.shooter = self
 		get_tree().root.add_child(shot)
 		self.ammunition -= 1
 		

@@ -1,14 +1,15 @@
 extends Area3D
 
 var type : Globals.EntityType = Globals.EntityType.PROJECTILE
-
+var speed_multiplier : int = 1
+var shooter : Node3D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 #	raycast.add_exception(body_to_ignore)
-	self.position += self.basis.z * -0.1
+	self.position += self.basis.z * -0.1 * speed_multiplier
 	
 #	print(self.position)
 	
@@ -28,6 +29,9 @@ func _on_body_entered(body):
 			body.attacked("shot")
 		queue_free()
 #		print(self.position)
+	if body.type == Globals.EntityType.PLAYER and body != self.shooter:
+		body.health -= 1
+		queue_free()
 	
 #	if body is StaticBody3D:
 ##		print("Hit Wall or Surface")
