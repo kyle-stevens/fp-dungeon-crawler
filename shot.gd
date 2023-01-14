@@ -30,7 +30,7 @@ func _on_body_entered(body):
 		queue_free()
 #		print(self.position)
 	if body.type == Globals.EntityType.PLAYER and body != self.shooter:
-		body.health -= 1
+		body.attacked("shot")
 		queue_free()
 	
 #	if body is StaticBody3D:

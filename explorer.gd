@@ -78,26 +78,26 @@ func _process(delta):
 		elif directions[direction_facing % 4] == "East":
 			self.position += Vector3(-1,0,0)
 
-#	if Input.is_action_just_pressed("strafe_left") and self.objs_left == self.null_node and not self.is_rotating:
-#		if directions[direction_facing % 4] == "North":
-#			self.position += Vector3(-1,0,0)
-#		elif directions[direction_facing % 4] == "West":
-#			self.position += Vector3(0,0,1)
-#		elif directions[direction_facing % 4] == "South":
-#			self.position += Vector3(1,0,0)
-#		elif directions[direction_facing % 4] == "East":
-#			self.position += Vector3(0,0,-1)
+	if Input.is_action_just_pressed("strafe_left") and self.objs_left == self.null_node and not self.is_rotating:
+		if directions[direction_facing % 4] == "North":
+			self.position += Vector3(-1,0,0)
+		elif directions[direction_facing % 4] == "West":
+			self.position += Vector3(0,0,1)
+		elif directions[direction_facing % 4] == "South":
+			self.position += Vector3(1,0,0)
+		elif directions[direction_facing % 4] == "East":
+			self.position += Vector3(0,0,-1)
 
-#	if Input.is_action_just_pressed("strafe_right") and self.objs_right == self.null_node and not self.is_rotating:
-#		if directions[direction_facing % 4] == "North":
-#			self.position += Vector3(1,0,0)
-#			#self.position = lerp(self.position, self.position + Vector3(0,0,-1), delta * 3)
-#		elif directions[direction_facing % 4] == "West":
-#			self.position += Vector3(0,0,-1)
-#		elif directions[direction_facing % 4] == "South":
-#			self.position += Vector3(-1,0,0)
-#		elif directions[direction_facing % 4] == "East":
-#			self.position += Vector3(0,0,1)
+	if Input.is_action_just_pressed("strafe_right") and self.objs_right == self.null_node and not self.is_rotating:
+		if directions[direction_facing % 4] == "North":
+			self.position += Vector3(1,0,0)
+			#self.position = lerp(self.position, self.position + Vector3(0,0,-1), delta * 3)
+		elif directions[direction_facing % 4] == "West":
+			self.position += Vector3(0,0,-1)
+		elif directions[direction_facing % 4] == "South":
+			self.position += Vector3(-1,0,0)
+		elif directions[direction_facing % 4] == "East":
+			self.position += Vector3(0,0,1)
 	
 	self.rotation.y = lerp_angle(self.rotation.y, rotations[direction_facing % 4], delta * 10)
 	#-zero not equal to zero bug
