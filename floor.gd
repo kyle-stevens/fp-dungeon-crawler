@@ -11,7 +11,3 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
-
-#func interact():
-#	print("The Character is interacting with this wall")
-#	return("an object string, but will be more later")

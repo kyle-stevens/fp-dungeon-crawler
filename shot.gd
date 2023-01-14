@@ -1,7 +1,7 @@
 extends Area3D
 
 var type : Globals.EntityType = Globals.EntityType.PROJECTILE
-var speed_multiplier : int = 1
+var speed_multiplier : float = 1
 var shooter : Node3D
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -9,33 +9,25 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 #	raycast.add_exception(body_to_ignore)
-	self.position += self.basis.z * -0.1 * speed_multiplier
+	print(self.position)
+	self.position += self.basis.z * (-0.1 * speed_multiplier)
+	print(self.position)
+	print(self.basis.z * (-0.1 * speed_multiplier))
 	
-#	print(self.position)
-	
-#	print(raycast.exclude_parent)
-#	print(raycast.target_position)
-#	print(self.position)
-
 
 func _on_body_entered(body):
-	if body.type == Globals.EntityType.ENEMY:
-#		print("Hit Enemy")
-		body.attacked("shot")
-		queue_free()
-	if body.type == Globals.EntityType.ARCHITECTURE:
-#		print("Hit Wall")
-		if body.has_method("attacked"):
+	if body != self.shooter:
+		if body.type == Globals.EntityType.ENEMY:
+	#		print("Hit Enemy")
 			body.attacked("shot")
-		queue_free()
-#		print(self.position)
-	if body.type == Globals.EntityType.PLAYER and body != self.shooter:
-		body.attacked("shot")
-		queue_free()
-	
-#	if body is StaticBody3D:
-##		print("Hit Wall or Surface")
-#		queue_free()
+			queue_free()
+		if body.type == Globals.EntityType.ARCHITECTURE:
+			if body.has_method("attacked"):
+				body.attacked("shot")
+			queue_free()
+		if body.type == Globals.EntityType.PLAYER:
+			body.attacked("shot")
+			queue_free()
 
 
 func _on_tree_exiting():

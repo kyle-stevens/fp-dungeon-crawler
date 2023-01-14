@@ -46,20 +46,6 @@ collision_mask = 15
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerRightInteraction"]
 shape = SubResource("SphereShape3D_o85s4")
 
-[node name="LightSource" type="Node3D" parent="."]
-
-[node name="Flashlight" type="SpotLight3D" parent="LightSource"]
-visible = false
-light_color = Color(1, 0.705882, 0.470588, 1)
-spot_attenuation = 2.0
-spot_angle_attenuation = 2.0
-
-[node name="Torch" type="OmniLight3D" parent="LightSource"]
-visible = false
-light_color = Color(1, 0.705882, 0.470588, 1)
-omni_range = 2.0
-omni_attenuation = 2.0
-
 [node name="UserInterface" parent="." instance=ExtResource("2_s17fi")]
 
 [node name="Timer" type="Timer" parent="UserInterface"]

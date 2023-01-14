@@ -64,72 +64,35 @@ func enemyMovement():
 #		print(min_vector)
 		self.position = min_vector
 		
-#	print(self.position)
-#	print(self.objs_in_front)
-#	print(direction_facing)
-#	target = target_body.position
-#	if self.objs_in_front != null_node:
-#		direction_facing -= 1
-#	else:
-#		print("found a place to move")
-#		if directions[direction_facing % 4] == "North":
-#			self.position += Vector3(0,0,-0.01)
-#			#self.position = lerp(self.position, self.position + Vector3(0,0,-1), delta * 3)
-#		elif directions[direction_facing % 4] == "West":
-#			self.position += Vector3(-0.01,0,0)
-##			self.position = lerp(self.position, self.position + Vector3(-1,0,0), delta * 3)
-#		elif directions[direction_facing % 4] == "South":
-#			self.position += Vector3(0,0,0.01)
-##			self.position = lerp(self.position, self.position + Vector3(0,0,1), delta * 3)
-#		elif directions[direction_facing % 4] == "East":
-#			self.position += Vector3(0.01,0,0)
-#	self.rotation.y = rotations[direction_facing % 4]
-#	await get_tree().create_timer(10.0, true, true).timeout
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	sprite.look_at(target_body.position, Vector3.UP)
-#	self.north = null_node
-#	self.east = null_node
-#	self.south = null_node
-#	self.west = null_node
-	#enemyMovement()
 	pass
 func attacked(direction):
 	queue_free()
 
-
 func _on_north_interaction_body_entered(body):
 	self.north = body
-
 
 func _on_east_interaction_body_entered(body):
 	self.east = body
 
-
 func _on_south_interaction_body_entered(body):
 	self.south = body
-
 
 func _on_west_interaction_body_entered(body):
 	self.west = body
 
-
 func _on_north_interaction_body_exited(body):
 	self.north = null_node
-
 
 func _on_east_interaction_body_exited(body):
 	self.east = null_node
 
-
 func _on_south_interaction_body_exited(body):
 	self.south = null_node
 
-
 func _on_west_interaction_body_exited(body):
 	self.west = null_node
-
 
 func _on_timer_timeout():
 	enemyMovement()

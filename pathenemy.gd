@@ -12,7 +12,6 @@ var type : Globals.EntityType = Globals.EntityType.ENEMY
 func _ready():
 	self.position = self.start
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	sprite.look_at(player.position, Vector3.UP)
@@ -21,17 +20,13 @@ func _process(delta):
 	var direction = (self.target - self.position).normalized() # get unit vector
 	if self.target != self.position:
 		self.position += direction * 0.05
-		
 	
 	if is_equal_approx(self.target.x, self.position.x) and is_equal_approx(self.target.z, self.position.z):
 		self.target = self.start
 		self.start = self.position
 
-
 func attacked(direction):
 	queue_free()
-		
-
 
 func _on_area_3d_body_entered(body):
 	print("hello")
