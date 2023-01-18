@@ -115,7 +115,10 @@ func _process(delta):
 		self.ammunition -= 1
 
 func attacked(direction):
-	self.health -= 1
+	if direction == "trap_death":
+		self.health = 0
+	else:
+		self.health -= 1
 #	print(direction)
 	$UserInterface/ColorRect.visible = true
 	$UserInterface/Timer.start(0.15)
@@ -153,3 +156,6 @@ func _on_player_right_interaction_body_exited(body):
 
 func _on_timer_timeout():
 	$UserInterface/ColorRect.visible = false
+
+
+

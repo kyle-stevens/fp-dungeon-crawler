@@ -4,7 +4,8 @@ enum EntityType {
 	PLAYER,
 	ENEMY,
 	ARCHITECTURE,
-	PROJECTILE
+	PROJECTILE,
+	TRAP
 }
 
 # Called when the node enters the scene tree for the first time.

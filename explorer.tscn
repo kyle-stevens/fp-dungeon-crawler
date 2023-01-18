@@ -51,6 +51,9 @@ shape = SubResource("SphereShape3D_o85s4")
 [node name="Timer" type="Timer" parent="UserInterface"]
 wait_time = 0.15
 
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+omni_range = 3.0
+
 [connection signal="body_entered" from="PlayerFrontInteraction" to="." method="_on_player_front_interaction_body_entered"]
 [connection signal="body_exited" from="PlayerFrontInteraction" to="." method="_on_player_front_interaction_body_exited"]
 [connection signal="body_entered" from="PlayerBackInteraction" to="." method="_on_player_back_interaction_body_entered"]

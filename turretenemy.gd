@@ -4,7 +4,7 @@ var type : Globals.EntityType = Globals.EntityType.ENEMY
 
 @export var target_body : PhysicsBody3D
 @onready var sprite : Sprite3D = get_node("Sprite3D")
-@export var range : int = 80
+@export var range : int = 3
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
