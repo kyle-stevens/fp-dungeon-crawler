@@ -23,6 +23,8 @@ var shoulders
 var health : int = 3
 var ammunition : int = 600
 
+@onready var animation : AnimatedSprite2D = self.get_node("UserInterface/AnimatedSprite2D")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	self.rotation = Vector3(0,0,0)
@@ -90,7 +92,8 @@ func _process(delta):
 		
 	#attacks
 	if Input.is_action_just_pressed("attack_up"):
-		#play attack anim
+		#play attack anim, last frame lingers for 4 frames before clearing, played at 24 fps
+		animation.play("swing_up")
 		if self.objs_in_front.has_method("attacked"):
 			self.objs_in_front.attacked("below")
 	if Input.is_action_just_pressed("attack_down"):
