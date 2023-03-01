@@ -21,7 +21,7 @@ var chest
 var shield
 var shoulders
 var health : int = 3
-var ammunition : int = 6
+var ammunition : int = 600
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

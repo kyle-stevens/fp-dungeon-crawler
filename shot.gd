@@ -17,6 +17,11 @@ func _process(delta):
 
 func _on_body_entered(body):
 	if body != self.shooter:
+		var explosion = preload("res://explosion.tscn").instantiate()
+		explosion.emitting = true
+		explosion.position = self.position
+		explosion.rotation = self.basis.z
+		get_tree().root.add_child(explosion)
 		if body.type == Globals.EntityType.ENEMY:
 	#		print("Hit Enemy")
 			body.attacked("shot")
@@ -30,13 +35,13 @@ func _on_body_entered(body):
 			queue_free()
 
 
-func _on_tree_exiting():
-	print("exiting tree")
-	var explosion = preload("res://explosion.tscn").instantiate()
-	explosion.emitting = true
-	explosion.position = self.position
-	explosion.rotation = self.basis.z
-	get_tree().root.add_child(explosion)
+#func _on_tree_exiting(): # stopped working in release candidate for some reason
+#	print("exiting tree")
+#	var explosion = preload("res://explosion.tscn").instantiate()
+#	explosion.emitting = true
+#	explosion.position = self.position
+#	explosion.rotation = self.basis.z
+#	get_tree().root.add_child(explosion)
 
 
 
