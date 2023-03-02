@@ -1,19 +1,31 @@
-[gd_scene load_steps=18 format=3 uid="uid://bot1q1ge21any"]
+[gd_scene load_steps=30 format=3 uid="uid://bot1q1ge21any"]
 
 [ext_resource type="Script" path="res://explorer.gd" id="1_77p0f"]
 [ext_resource type="PackedScene" uid="uid://dgtjawbsxxgex" path="res://user_interface.tscn" id="2_s17fi"]
 [ext_resource type="Texture2D" uid="uid://cv45yb4u8o8qb" path="res://Assets/Vertical Swings/0001.png" id="3_bc5e4"]
+[ext_resource type="Texture2D" uid="uid://b00aimjk4swv0" path="res://Assets/Horizontal Swings/0001.png" id="3_qq1am"]
 [ext_resource type="Texture2D" uid="uid://dxolohm1c58eg" path="res://Assets/Vertical Swings/0002.png" id="4_alg20"]
+[ext_resource type="Texture2D" uid="uid://c65yq632tse2w" path="res://Assets/Horizontal Swings/0002.png" id="4_d5ils"]
 [ext_resource type="Texture2D" uid="uid://bpee43e8n0nmt" path="res://Assets/Vertical Swings/0003.png" id="5_fw6xi"]
+[ext_resource type="Texture2D" uid="uid://cphsgnbdw8fqx" path="res://Assets/Horizontal Swings/0003.png" id="5_qd0qy"]
 [ext_resource type="Texture2D" uid="uid://03qsy65ujpt0" path="res://Assets/Vertical Swings/0004.png" id="6_2embf"]
+[ext_resource type="Texture2D" uid="uid://bq53w21xh1myo" path="res://Assets/Horizontal Swings/0004.png" id="6_ljmun"]
+[ext_resource type="Texture2D" uid="uid://c85jrsr0g6t15" path="res://Assets/Horizontal Swings/0005.png" id="7_8post"]
 [ext_resource type="Texture2D" uid="uid://duxaymcxelgf6" path="res://Assets/Vertical Swings/0005.png" id="7_xc02y"]
+[ext_resource type="Texture2D" uid="uid://ctkwy02cuq7b7" path="res://Assets/Horizontal Swings/0006.png" id="8_0r0yi"]
 [ext_resource type="Texture2D" uid="uid://ctsfst0d1ren4" path="res://Assets/Vertical Swings/0006.png" id="8_5u5lp"]
+[ext_resource type="Texture2D" uid="uid://bguyjcos4lwwl" path="res://Assets/Horizontal Swings/0007.png" id="9_5fgcw"]
 [ext_resource type="Texture2D" uid="uid://cncf7r4267htu" path="res://Assets/Vertical Swings/0007.png" id="9_xpv43"]
 [ext_resource type="Texture2D" uid="uid://dlusac1h7mjtg" path="res://Assets/Vertical Swings/0008.png" id="10_0p5uq"]
+[ext_resource type="Texture2D" uid="uid://t4nxt6grv6nr" path="res://Assets/Horizontal Swings/0008.png" id="10_1ygqf"]
 [ext_resource type="Texture2D" uid="uid://6fytxu6e3vhd" path="res://Assets/Vertical Swings/0009.png" id="11_6qynj"]
+[ext_resource type="Texture2D" uid="uid://bdrgchnyp1v6s" path="res://Assets/Horizontal Swings/0009.png" id="11_eu3p1"]
+[ext_resource type="Texture2D" uid="uid://dw5l8rux8ypjp" path="res://Assets/Horizontal Swings/0010.png" id="12_65cs1"]
 [ext_resource type="Texture2D" uid="uid://byh3sg4ydpp85" path="res://Assets/Vertical Swings/0010.png" id="12_lckkr"]
+[ext_resource type="Texture2D" uid="uid://d1hegb1ht3mcr" path="res://Assets/Horizontal Swings/0011.png" id="13_1umdv"]
 [ext_resource type="Texture2D" uid="uid://b384a0cu723ks" path="res://Assets/Vertical Swings/0011.png" id="13_kx0us"]
 [ext_resource type="Texture2D" uid="uid://c07hq08ihgsp7" path="res://Assets/Vertical Swings/0012.png" id="14_ij7cx"]
+[ext_resource type="Texture2D" uid="uid://byi5jjbqtbm5y" path="res://Assets/Horizontal Swings/0012.png" id="14_jjqw6"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ina0q"]
 
@@ -22,10 +34,54 @@ radius = 0.25
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8od4h"]
 animations = [{
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_qq1am")
+}],
 "loop": true,
 "name": &"default",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_qq1am")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_d5ils")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_qd0qy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ljmun")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_8post")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_0r0yi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_5fgcw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_1ygqf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_eu3p1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_65cs1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_1umdv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_jjqw6")
+}],
+"loop": false,
+"name": &"swing_horizontal",
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -64,7 +120,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("14_ij7cx")
 }],
-"loop": true,
+"loop": false,
 "name": &"swing_up",
 "speed": 12.0
 }]
@@ -115,7 +171,6 @@ wait_time = 0.15
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UserInterface"]
 position = Vector2(960, 540)
 sprite_frames = SubResource("SpriteFrames_8od4h")
-animation = &"swing_up"
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 omni_range = 3.0

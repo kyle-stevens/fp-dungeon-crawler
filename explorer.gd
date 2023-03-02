@@ -32,6 +32,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	
+	
 	$UserInterface/bullets.text = "Projectiles left - " + str(ammunition)
 	$UserInterface/health.text = str(health) + " - Health"
 	
@@ -39,10 +41,13 @@ func _process(delta):
 	#Still possible to glitch player between walls
 	if Input.is_action_just_pressed("turn_left"):
 		direction_facing += 1 # left turn
+		animation.play("default")
 	if Input.is_action_just_pressed("turn_right"):
 		direction_facing -= 1 # right turn
+		animation.play("default")
 	
 	if Input.is_action_just_pressed("walk") and self.objs_in_front == self.null_node and not self.is_rotating:
+		animation.play("default")
 		if directions[direction_facing % 4] == "North":
 			self.position += Vector3(0,0,-1)
 		elif directions[direction_facing % 4] == "West":
@@ -53,6 +58,7 @@ func _process(delta):
 			self.position += Vector3(1,0,0)
 	
 	if Input.is_action_just_pressed("walk_back") and self.objs_behind == self.null_node and not self.is_rotating:
+		animation.play("default")
 		if directions[direction_facing % 4] == "North":
 			self.position += Vector3(0,0,1)
 		elif directions[direction_facing % 4] == "West":
@@ -63,6 +69,7 @@ func _process(delta):
 			self.position += Vector3(-1,0,0)
 
 	if Input.is_action_just_pressed("strafe_left") and self.objs_left == self.null_node and not self.is_rotating:
+		animation.play("default")
 		if directions[direction_facing % 4] == "North":
 			self.position += Vector3(-1,0,0)
 		elif directions[direction_facing % 4] == "West":
@@ -73,6 +80,7 @@ func _process(delta):
 			self.position += Vector3(0,0,-1)
 
 	if Input.is_action_just_pressed("strafe_right") and self.objs_right == self.null_node and not self.is_rotating:
+		animation.play("default")
 		if directions[direction_facing % 4] == "North":
 			self.position += Vector3(1,0,0)
 		elif directions[direction_facing % 4] == "West":
@@ -98,14 +106,17 @@ func _process(delta):
 			self.objs_in_front.attacked("below")
 	if Input.is_action_just_pressed("attack_down"):
 		#play attack anim
+		animation.play_backwards("swing_up")
 		if self.objs_in_front.has_method("attacked"):
 			self.objs_in_front.attacked("above")
 	if Input.is_action_just_pressed("attack_left"):
 		#play attack anim
+		animation.play_backwards("swing_horizontal")
 		if self.objs_in_front.has_method("attacked"):
 			self.objs_in_front.attacked("left")
 	if Input.is_action_just_pressed("attack_right"):
 		#play attack anim
+		animation.play("swing_horizontal")
 		if self.objs_in_front.has_method("attacked"):
 			self.objs_in_front.attacked("right")
 	if Input.is_action_just_pressed("fire") and self.ammunition > 0: #still a little weird
