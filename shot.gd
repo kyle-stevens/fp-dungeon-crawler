@@ -13,6 +13,8 @@ func _process(delta):
 	self.position += self.basis.z * (-0.1 * speed_multiplier)
 	print(self.position)
 	print(self.basis.z * (-0.1 * speed_multiplier))
+	$CollisionShape3D/AnimatedSprite3D.look_at(shooter.position)
+	$CollisionShape3D/AnimatedSprite3D.play("default")
 	
 
 func _on_body_entered(body):

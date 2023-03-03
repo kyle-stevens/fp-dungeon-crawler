@@ -1,9 +1,65 @@
-[gd_scene load_steps=5 format=3 uid="uid://ramb4otpp3rn"]
+[gd_scene load_steps=18 format=3 uid="uid://ramb4otpp3rn"]
 
 [ext_resource type="Script" path="res://shot.gd" id="1_gtunb"]
+[ext_resource type="Texture2D" uid="uid://bmwg8m4kffjlq" path="res://Assets/Shot/0001.png" id="2_6w72o"]
+[ext_resource type="Texture2D" uid="uid://d28oi0yb1tgwf" path="res://Assets/Shot/0002.png" id="3_4s6ky"]
+[ext_resource type="Texture2D" uid="uid://3qkfdx20pd0d" path="res://Assets/Shot/0003.png" id="4_ll1qh"]
+[ext_resource type="Texture2D" uid="uid://de0mk0yjftktc" path="res://Assets/Shot/0004.png" id="5_ok6xc"]
+[ext_resource type="Texture2D" uid="uid://da411wq8lojko" path="res://Assets/Shot/0005.png" id="6_s4ui8"]
+[ext_resource type="Texture2D" uid="uid://j42aur73ki4d" path="res://Assets/Shot/0006.png" id="7_enc5q"]
+[ext_resource type="Texture2D" uid="uid://c8hxohsyt4k3h" path="res://Assets/Shot/0007.png" id="8_mxkg2"]
+[ext_resource type="Texture2D" uid="uid://blf2t03ytg5xf" path="res://Assets/Shot/0008.png" id="9_m0ee8"]
+[ext_resource type="Texture2D" uid="uid://b3284xu4amesn" path="res://Assets/Shot/0009.png" id="10_yryqv"]
+[ext_resource type="Texture2D" uid="uid://dsn2ipe6r5pl1" path="res://Assets/Shot/0010.png" id="11_cnua4"]
+[ext_resource type="Texture2D" uid="uid://bhvvxtfopb01v" path="res://Assets/Shot/0011.png" id="12_p8llb"]
+[ext_resource type="Texture2D" uid="uid://jbh2d5syh4ye" path="res://Assets/Shot/0012.png" id="13_22ogc"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_0ncn8"]
 radius = 0.25
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d3dy1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_6w72o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_4s6ky")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ll1qh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ok6xc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_s4ui8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_enc5q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_mxkg2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_m0ee8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_yryqv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_cnua4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_p8llb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_22ogc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qy7lp"]
 emission_enabled = true
@@ -19,6 +75,11 @@ script = ExtResource("1_gtunb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_0ncn8")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="CollisionShape3D"]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
+sprite_frames = SubResource("SpriteFrames_d3dy1")
+frame_progress = 0.85607
 
 [node name="CPUParticles3D" type="CPUParticles3D" parent="."]
 amount = 25

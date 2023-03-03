@@ -555,9 +555,6 @@ shadow_enabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -8)
 target_body = NodePath("../Explorer")
 
-[node name="Floor22" parent="." instance=ExtResource("8_1byo3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
-
 [node name="Floor24" parent="." instance=ExtResource("8_1byo3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -7)
 
