@@ -1,12 +1,75 @@
-[gd_scene load_steps=5 format=3 uid="uid://boxny7najbn7m"]
+[gd_scene load_steps=18 format=3 uid="uid://boxny7najbn7m"]
 
 [ext_resource type="Script" path="res://pathenemy.gd" id="1_f5iv0"]
-[ext_resource type="Texture2D" uid="uid://bmhbmofbfawa3" path="res://icon.svg" id="2_bq8kb"]
+[ext_resource type="Texture2D" uid="uid://r8m5m42xc0n4" path="res://Assets/FloatingSkull/0001.png" id="2_5uymr"]
+[ext_resource type="Texture2D" uid="uid://3art7btnl67j" path="res://Assets/FloatingSkull/0002.png" id="3_dvd5q"]
+[ext_resource type="Texture2D" uid="uid://3g1qi2i8n1e3" path="res://Assets/FloatingSkull/0003.png" id="4_b0e08"]
+[ext_resource type="Texture2D" uid="uid://cjtpdghae7ncg" path="res://Assets/FloatingSkull/0004.png" id="5_f1llk"]
+[ext_resource type="Texture2D" uid="uid://cx4a2tsbp35c1" path="res://Assets/FloatingSkull/0005.png" id="6_xt0y0"]
+[ext_resource type="Texture2D" uid="uid://cqmaqyljuu7ib" path="res://Assets/FloatingSkull/0006.png" id="7_oguwh"]
+[ext_resource type="Texture2D" uid="uid://df2ypep3do4y1" path="res://Assets/FloatingSkull/0007.png" id="8_ghekv"]
+[ext_resource type="Texture2D" uid="uid://db2qi061kgh0f" path="res://Assets/FloatingSkull/0008.png" id="9_805av"]
+[ext_resource type="Texture2D" uid="uid://chjqsfsdysjnf" path="res://Assets/FloatingSkull/0009.png" id="10_m6sho"]
+[ext_resource type="Texture2D" uid="uid://bf76tu13ch0nm" path="res://Assets/FloatingSkull/0010.png" id="11_iacak"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_tqd48"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_20r8k"]
 radius = 0.253209
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4sqj0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_5uymr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_dvd5q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_b0e08")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_f1llk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_xt0y0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_oguwh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ghekv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_805av")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_m6sho")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_iacak")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0bjc3"]
+albedo_color = Color(1, 0.360784, 0.184314, 1)
+emission_enabled = true
+emission = Color(1, 0.521569, 0.294118, 1)
+emission_operator = 1
+
+[sub_resource type="BoxMesh" id="BoxMesh_ipy6y"]
+material = SubResource("StandardMaterial3D_0bjc3")
+size = Vector3(0.1, 0.1, 0.1)
+
+[sub_resource type="Curve" id="Curve_5rmps"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0, -130.909), 0.0, -1650.0, 0, 0, Vector2(1, -294.545), -2892.52, 0.0, 0, 0]
+point_count = 2
 
 [node name="PathEnemy" type="RigidBody3D"]
 collision_layer = 2
@@ -28,10 +91,29 @@ height = 0.75
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_20r8k")
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+[node name="Sprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 shaded = true
-texture = ExtResource("2_bq8kb")
+sprite_frames = SubResource("SpriteFrames_4sqj0")
+frame_progress = 0.206998
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="Sprite3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.838327, 3.35659)
+amount = 15
+lifetime = 0.5
+mesh = SubResource("BoxMesh_ipy6y")
+direction = Vector3(0, 1, 1)
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+angular_velocity_min = 1.0
+angular_velocity_max = 5.0
+angular_velocity_curve = SubResource("Curve_5rmps")
+linear_accel_min = 2.0
+linear_accel_max = 5.0
+radial_accel_min = 1.0
+radial_accel_max = 5.0
+angle_max = 90.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

@@ -5,12 +5,13 @@ var type : Globals.EntityType = Globals.EntityType.ENEMY
 @export var target : Vector3
 @export var start : Vector3
 
-@onready var sprite : Sprite3D = get_node("Sprite3D")
+@onready var sprite : AnimatedSprite3D = get_node("Sprite3D")
 @export var player : Node3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	self.position = self.start
+	sprite.play("default")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
